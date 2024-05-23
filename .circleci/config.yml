@@ -58,7 +58,7 @@ jobs:
             git config --global user.name "denis-dovgodko"
             git add kubernetes/*
             git commit -am "[ci skip] Autogenerate"
-            git push https://${GITHUB_TOKEN}@github.com/denis-dovgodko/webserver-ec2-module-terraform main > /dev/null 2>&1
+            git push https://${GITHUB_TOKEN}@github.com/denis-dovgodko/webserver-ec2-module-terraform main || true
 workflows:
   analyze-tf-code:
     jobs:
