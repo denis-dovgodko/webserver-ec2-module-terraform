@@ -50,7 +50,7 @@ jobs:
             envsubst < ${templates}/kustomization.yaml > "${customization_path}/${CIRCLE_BRANCH}.yaml"
             envsubst < ${templates}/gitrepository.yaml > "${app_path}/${CIRCLE_BRANCH}/gitrepository.yaml"
             envsubst < ${templates}/terraform.yaml > "${app_path}/${CIRCLE_BRANCH}/terraform.yaml"
-            " - ../${CIRCLE_BRANCH}.yaml" >> ${customization_path}/flux-system/kustomization.yaml
+            echo " - ../${CIRCLE_BRANCH}.yaml" >> ${customization_path}/flux-system/kustomization.yaml
       - run:
           name: Push Changes
           command: |
