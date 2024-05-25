@@ -34,9 +34,9 @@ jobs:
       name: go/default
       tag: '1.19.2'
     environment:
-      customization_path: webserver-ec2-module-terraform/kubernetes/fluxcd/repositories/infra-repo/clusters/dev-cluster
-      app_path: webserver-ec2-module-terraform/kubernetes/fluxcd/repositories/infra-repo/apps
-      templates: webserver-ec2-module-terraform/templates
+      customization_path: kubernetes/fluxcd/repositories/infra-repo/clusters/dev-cluster
+      app_path: kubernetes/fluxcd/repositories/infra-repo/apps
+      templates: templates
     steps:
       - checkout
       - run:
@@ -46,7 +46,6 @@ jobs:
             envsubst < ${templates}/kustomization.yaml > "${customization_path}/${CIRCLE_BRANCH}.yaml"
             envsubst < ${templates}/gitrepository.yaml > "${app_path}/${CIRCLE_BRANCH}/gitrepository.yaml"
             envsubst < ${templates}/terraform.yaml > "${app_path}/${CIRCLE_BRANCH}/terraform.yaml"
-            echo " - ../${CIRCLE_BRANCH}.yaml" >> ${customization_path}/flux-system/kustomization.yaml
       - run:
           name: Push Changes
           command: |
