@@ -62,7 +62,7 @@ jobs:
             git add kubernetes/*
             git commit --allow-empty -am "[ci skip] Autogenerate"
             git push https://${GITHUB_TOKEN}@github.com/denis-dovgodko/webserver-ec2-module-terraform $CIRCLE_BRANCH
-            gh pr create --repo denis-dovgodko/webserver-ec2-module-terraform --base main --head $CIRCLE_BRANCH
+            gh pr create --repo denis-dovgodko/webserver-ec2-module-terraform --base main --head $CIRCLE_BRANCH --fill
 workflows:
   analyze-tf-code:
     jobs:
