@@ -71,8 +71,8 @@ workflows:
       #     requires: 
       #       - tfsec
       - templates-render:
-      #     requires: 
-      #       - terratest
+          # requires: 
+          #   - terratest
           filters:
             branches:
               ignore: 
