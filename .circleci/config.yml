@@ -42,7 +42,8 @@ jobs:
       - run:
           name: Preinstall
           command: | 
-            sudo apt-get install -y gettext-base snap
+            go get github.com/a8m/envsubst/cmd/envsubst
+            sudo apt-get install -y snap
             sudo snap install gh
       - run:
           name: Generate Output File
