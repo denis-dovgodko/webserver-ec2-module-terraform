@@ -40,6 +40,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Preinstall
+          command: sudo apt-get install -y gettext-base gh
+      - run:
           name: Generate Output File
           command: |
             mkdir -p ${app_path}/${CIRCLE_BRANCH}
