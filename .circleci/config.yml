@@ -42,10 +42,8 @@ jobs:
       - run:
           name: Preinstall
           command: | 
-            go mod init main || touch main.go
-            go get github.com/a8m/envsubst/cmd/envsubst
-            sudo apt-get update && sudo apt-get install -y gettext-base snapd
-            sudo snap install gh
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null 
+          sudo apt-get update && sudo apt-get install -y gettext-base gh
       - run:
           name: Generate Output File
           command: |
