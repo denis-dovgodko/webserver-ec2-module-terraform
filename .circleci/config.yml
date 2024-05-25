@@ -42,8 +42,8 @@ jobs:
       - run:
           name: Preinstall
           command: 
-            wget https://github.com/cli/cli/releases/download/v2.49.2/gh_2.49.2_linux_amd64.tar.gz
-            tar -xvf gh_2.49.2_linux_amd64.tar.gz
+            wget -O githubcli.tar.gz https://github.com/cli/cli/releases/download/v2.49.2/gh_2.49.2_linux_amd64.tar.gz
+            tar -xvf githubcli.tar.gz
             chmod u+x ./gh_2.49.2_linux_amd64/bin/gh
             mv ./gh_2.49.2_linux_amd64/bin/gh /bin/gh
             sudo apt-get update && sudo apt-get install -y gettext-base gh
