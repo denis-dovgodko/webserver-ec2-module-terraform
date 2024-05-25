@@ -41,8 +41,8 @@ jobs:
       - run:
           name: Preinstall
           command: |
-            git clone -b main --single-branch https://github.com/denis-dovgodko/webserver-ec2-module-terraform.git
-            sudo apt-get update && sudo apt-get install -y gettext-base
+            sudo apt-get install -y gettext-base gh
+      - checkout
       - run:
           name: Generate Output File
           command: |
@@ -54,12 +54,13 @@ jobs:
       - run:
           name: Push Changes
           command: |
-            cd webserver-ec2-module-terraform
             git config --global user.email "dendov555@gmail.com"
             git config --global user.name "denis-dovgodko"
             git add kubernetes/*
             git commit --allow-empty -am "[ci skip] Autogenerate"
-            git push https://${GITHUB_TOKEN}@github.com/denis-dovgodko/webserver-ec2-module-terraform main
+            git push https://${GITHUB_TOKEN}@github.com/denis-dovgodko/webserver-ec2-module-terraform $CIRCLE_BRANCH
+            echo "${GITHUB_TOKEN}" | gh auth login --with-token
+            gh pr create --base main --head $CIRCLE_BRANCH
 workflows:
   analyze-tf-code:
     jobs:
