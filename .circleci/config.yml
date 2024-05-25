@@ -38,10 +38,6 @@ jobs:
       app_path: webserver-ec2-module-terraform/kubernetes/fluxcd/repositories/infra-repo/apps
       templates: webserver-ec2-module-terraform/templates
     steps:
-      - run:
-          name: Preinstall
-          command: |
-            sudo apt-get install -y gh
       - checkout
       - run:
           name: Generate Output File
