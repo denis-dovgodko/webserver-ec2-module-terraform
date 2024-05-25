@@ -41,7 +41,9 @@ jobs:
       - checkout
       - run:
           name: Preinstall
-          command: sudo apt-get install -y gettext-base gh
+          command: | 
+            sudo apt-get install -y gettext-base snap
+            sudo snap install gh
       - run:
           name: Generate Output File
           command: |
